@@ -1,168 +1,588 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>O Poder da Palavra</title>
-    <link rel="icon" href="./imagens/icon.ico" type="image/x-icon">
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-image: url('fundo.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            margin: 0;
-            padding: 0;
-        }
-        .header {
-            
-            background-image: url(./imagens/fundo2.jpg);
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            padding: 20px;
-            text-align: center;
-            color: rgb(12, 11, 11);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
-        .header img {
-            width: 50px;
-            height: 50px;
-        }
-        .header h1 {
-            margin: 0;
-        }
-        .menu {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            background-color: #333;
-            padding: 10px 0;
-        }
-        .menu a {
-            text-decoration: none;
-            color: #fff;
-            padding: 10px 15px;
-            margin: 5px;
-            border-radius: 5px;
-            transition: background-color 0.3s, color 0.3s;
-            text-align: center;
-            flex: 1 1 auto;
-            min-width: 100px;
-        }
-        .menu a:hover {
-            background-color: #4CAF50;
-            color: #fff;
-        }
-        .content {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
-        .content h2 {
-            color: #333;
-        }
-        .content p {
-            line-height: 1.6;
-            color: #666;
-        }
-        #estudos-biblicos {
-            background-image: url(./imagens/fundo1.jpg);
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-        }
-        #timoteo {
-            color: white;
-   text-shadow:
-       3px 3px 0 #000,
-     -1px -1px 0 #000,  
-      1px -1px 0 #000,
-      -1px 1px 0 #000,
-       1px 1px 0 #000;
-        }
-        #paragrafo {
-            color: black;
-        }
-        #pagina-inicial {
-            background-image: url(./imagens/capa2.jpg);
-            background-size: cover;
-         }
-         #pagina-inicial h1 {
-            color: white;
-            text-shadow:
-            3px 3px 0 #000,
-           -1px -1px 0 #000,  
-           1px -1px 0 #000,
-          -1px 1px 0 #000,
-            1px 1px 0 #000;
-            background-color: #333;
-            text-align: center;
-         }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#10251f">
+  <meta name="description" content="Explore estudos bíblicos, esboços de pregações, personagens, mapas e um curso básico de teologia.">
+  <title>O Poder da Palavra | Estudos Bíblicos</title>
+  <link rel="icon" href="./imagens/icon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --forest: #10251f;
+      --forest-light: #193b30;
+      --gold: #d8b56d;
+      --gold-light: #f0dba9;
+      --cream: #f7f5ef;
+      --paper: #fffefa;
+      --ink: #1d2924;
+      --muted: #66736c;
+      --line: rgba(25, 59, 48, .12);
+      --shadow: 0 18px 55px rgba(18, 39, 31, .09);
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(16, 37, 31, .96);
+      backdrop-filter: blur(14px);
+      color: white;
+      border-bottom: 1px solid rgba(255,255,255,.09);
+    }
+    .header-inner {
+      width: min(1160px, calc(100% - 40px));
+      min-height: 82px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .brand img {
+      width: 46px;
+      height: 46px;
+      object-fit: contain;
+      border-radius: 13px;
+      background: rgba(255,255,255,.08);
+      padding: 5px;
+    }
+    .brand-name {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 1.28rem;
+      font-weight: 700;
+      letter-spacing: -.02em;
+    }
+    .brand-tagline {
+      display: block;
+      margin-top: -3px;
+      color: #c5d1ca;
+      font-size: .72rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .menu {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+    .menu a {
+      padding: 10px 12px;
+      border-radius: 999px;
+      color: #e9eee9;
+      text-decoration: none;
+      font-size: .88rem;
+      font-weight: 600;
+      transition: background .2s ease, color .2s ease, transform .2s ease;
+    }
+    .menu a:hover, .menu a:focus-visible {
+      color: var(--forest);
+      background: var(--gold-light);
+      outline: none;
+      transform: translateY(-1px);
+    }
+
+    .hero {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      min-height: 570px;
+      display: grid;
+      align-items: center;
+      background:
+        linear-gradient(90deg, rgba(8, 25, 20, .91) 0%, rgba(8, 25, 20, .76) 48%, rgba(8, 25, 20, .25) 100%),
+        url("./imagens/fundo1.jpg") center/cover no-repeat,
+        var(--forest);
+      color: white;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      width: 420px;
+      height: 420px;
+      right: -120px;
+      bottom: -200px;
+      border: 1px solid rgba(240,219,169,.35);
+      border-radius: 50%;
+      box-shadow: 0 0 0 45px rgba(240,219,169,.04), 0 0 0 90px rgba(240,219,169,.035);
+    }
+    .hero-inner {
+      width: min(1160px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 90px 0 100px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 20px;
+      color: var(--gold-light);
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 30px;
+      height: 1px;
+      background: var(--gold);
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    .hero h1 {
+      max-width: 720px;
+      margin-bottom: 22px;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(2.8rem, 6vw, 5.4rem);
+      font-weight: 600;
+      line-height: 1.04;
+      letter-spacing: -.045em;
+    }
+    .hero h1 span { color: var(--gold-light); }
+    .hero-copy {
+      max-width: 610px;
+      margin-bottom: 32px;
+      color: #e0e8e2;
+      font-size: clamp(1rem, 2vw, 1.15rem);
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 48px;
+      padding: 12px 20px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: .92rem;
+      font-weight: 700;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+    }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary { background: var(--gold-light); color: var(--forest); }
+    .button-primary:hover { background: #f7e8c3; }
+    .button-ghost { color: white; border-color: rgba(255,255,255,.38); background: rgba(255,255,255,.05); }
+    .button-ghost:hover { border-color: var(--gold-light); background: rgba(255,255,255,.1); }
+
+    .quote-wrap {
+      width: min(1160px, calc(100% - 40px));
+      margin: -48px auto 0;
+      position: relative;
+      z-index: 2;
+    }
+    .quote-card {
+      display: grid;
+      grid-template-columns: 54px 1fr;
+      gap: 20px;
+      align-items: start;
+      padding: 32px clamp(22px, 4vw, 44px);
+      border: 1px solid rgba(216,181,109,.35);
+      border-radius: var(--radius);
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+    .quote-mark {
+      display: grid;
+      place-items: center;
+      width: 54px;
+      height: 54px;
+      border-radius: 17px;
+      background: #f4ead3;
+      color: #8a6a2e;
+      font-family: Georgia, serif;
+      font-size: 2.8rem;
+      line-height: 1;
+    }
+    .quote-card blockquote {
+      margin: 0;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(1.1rem, 2.4vw, 1.55rem);
+      line-height: 1.5;
+    }
+    .quote-card cite {
+      display: block;
+      margin-top: 12px;
+      color: #8a6a2e;
+      font-family: "DM Sans", sans-serif;
+      font-size: .83rem;
+      font-style: normal;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .section {
+      width: min(1160px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 92px 0;
+    }
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+    .section-kicker {
+      margin-bottom: 10px;
+      color: #8a6a2e;
+      font-size: .76rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+    .section h2 {
+      margin-bottom: 0;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.13;
+      letter-spacing: -.035em;
+    }
+    .section-intro {
+      max-width: 460px;
+      margin: 0;
+      color: var(--muted);
+    }
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .resource-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 255px;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+      box-shadow: 0 5px 22px rgba(18,39,31,.025);
+      text-decoration: none;
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+    .resource-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(216,181,109,.7);
+      box-shadow: var(--shadow);
+    }
+    .card-icon {
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      margin-bottom: 22px;
+      border-radius: 15px;
+      background: #edf2ed;
+      color: var(--forest-light);
+      font-size: 1.35rem;
+    }
+    .resource-card h3 {
+      margin-bottom: 10px;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 1.35rem;
+      line-height: 1.25;
+    }
+    .resource-card p { margin-bottom: 22px; color: var(--muted); font-size: .94rem; }
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: auto;
+      color: #456b55;
+      font-size: .88rem;
+      font-weight: 700;
+    }
+    .course-banner {
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: 32px;
+      align-items: center;
+      padding: clamp(28px, 5vw, 56px);
+      border-radius: 30px;
+      background:
+        linear-gradient(110deg, rgba(16,37,31,.97), rgba(25,59,48,.91)),
+        url("./imagens/capa2.jpg") center/cover;
+      color: white;
+    }
+    .course-banner::after {
+      content: "✦";
+      position: absolute;
+      right: 5%;
+      top: -45px;
+      color: rgba(240,219,169,.12);
+      font-size: 18rem;
+      line-height: 1;
+      pointer-events: none;
+    }
+    .course-banner > * { position: relative; z-index: 1; }
+    .course-banner .section-kicker { color: var(--gold-light); }
+    .course-banner h2 { max-width: 620px; margin-bottom: 18px; }
+    .course-banner p { max-width: 610px; margin-bottom: 26px; color: #d5e0d9; }
+    .course-note {
+      justify-self: end;
+      max-width: 260px;
+      padding: 25px;
+      border: 1px solid rgba(240,219,169,.35);
+      border-radius: 22px;
+      background: rgba(255,255,255,.055);
+      backdrop-filter: blur(8px);
+    }
+    .course-note strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--gold-light);
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 1.4rem;
+    }
+    .course-note span { color: #d5e0d9; font-size: .9rem; }
+
+    .closing {
+      padding-top: 0;
+      text-align: center;
+    }
+    .closing-inner {
+      padding: 42px 24px;
+      border-top: 1px solid var(--line);
+    }
+    .closing h2 { margin-bottom: 14px; }
+    .closing p { max-width: 650px; margin: 0 auto; color: var(--muted); }
+    .site-footer {
+      padding: 28px 20px;
+      background: var(--forest);
+      color: #c8d4cd;
+      text-align: center;
+      font-size: .85rem;
+    }
+    .site-footer strong { color: white; }
+    .mobile-menu-button { display: none; }
+
+    @media (max-width: 980px) {
+      .header-inner { width: min(100% - 32px, 1160px); min-height: 74px; }
+      .mobile-menu-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        border: 1px solid rgba(255,255,255,.2);
+        border-radius: 12px;
+        background: transparent;
+        color: white;
+        font-size: 1.35rem;
+        cursor: pointer;
+      }
+      .menu {
+        display: none;
+        position: absolute;
+        top: calc(100% + 1px);
+        left: 0;
+        right: 0;
+        padding: 14px 20px 20px;
+        background: var(--forest);
+        border-bottom: 1px solid rgba(255,255,255,.1);
+      }
+      .menu.is-open { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .menu a { text-align: center; }
+      .resource-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .section-heading { align-items: start; flex-direction: column; }
+    }
+    @media (max-width: 640px) {
+      .header-inner { width: calc(100% - 28px); gap: 12px; }
+      .brand img { width: 40px; height: 40px; }
+      .brand-name { font-size: 1.08rem; }
+      .brand-tagline { font-size: .62rem; }
+      .menu.is-open { grid-template-columns: 1fr; }
+      .hero { min-height: 540px; background-position: 58% center; }
+      .hero-inner, .section, .quote-wrap { width: calc(100% - 28px); }
+      .hero-inner { padding: 76px 0 88px; }
+      .hero h1 { font-size: clamp(2.7rem, 13vw, 4rem); }
+      .hero-actions { align-items: stretch; flex-direction: column; max-width: 300px; }
+      .quote-wrap { margin-top: -34px; }
+      .quote-card { grid-template-columns: 1fr; gap: 14px; padding: 24px; }
+      .quote-mark { width: 44px; height: 44px; font-size: 2.3rem; }
+      .section { padding: 68px 0; }
+      .resource-grid { grid-template-columns: 1fr; gap: 14px; }
+      .resource-card { min-height: 0; padding: 24px; }
+      .course-banner { grid-template-columns: 1fr; gap: 24px; }
+      .course-note { justify-self: stretch; max-width: none; }
+      .closing { padding-top: 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
 </head>
 <body>
-
-    <div class="header">
-        <img src="./imagens/icon.ico" alt="Bíblia" width="50" height="50">
-        <h1>O Poder da Palavra</h1>
-
-    <nav class="menu">
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#inicio" aria-label="O Poder da Palavra - página inicial">
+        <img src="./imagens/icon.ico" alt="" width="46" height="46">
+        <span>
+          <span class="brand-name">O Poder da Palavra</span>
+          <span class="brand-tagline">Conhecimento • Fé • Escrituras</span>
+        </span>
+      </a>
+      <button class="mobile-menu-button" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-principal">☰</button>
+      <nav class="menu" id="menu-principal" aria-label="Menu principal">
         <a href="biblia.html">Bíblia</a>
         <a href="esboços.html">Esboços</a>
         <a href="personagens.html">Personagens</a>
         <a href="mapas.html">Mapas</a>
         <a href="curso teologico.html">Curso Básico</a>
-        <a href="concordância">Concordância Bíblica</a>
+        <a href="concordância">Concordância</a>
         <a href="ilustrações.html">Ilustrações</a>
-        
-    </nav>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-inner">
+        <p class="eyebrow">Um espaço para crescer na Palavra</p>
+        <h1>Descubra a riqueza das <span>Escrituras.</span></h1>
+        <p class="hero-copy">Estude a Bíblia com mais profundidade, encontre recursos para preparar mensagens e fortaleça sua caminhada de fé com conteúdos para aprender e compartilhar.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#recursos">Explorar conteúdos <span aria-hidden="true">↗</span></a>
+          <a class="button button-ghost" href="curso teologico.html">Conhecer o curso</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="quote-wrap">
+      <div class="quote-card">
+        <div class="quote-mark" aria-hidden="true">“</div>
+        <div>
+          <blockquote>Procura apresentar-te a Deus aprovado, como obreiro que não tem de que se envergonhar, que maneja bem a palavra da verdade.</blockquote>
+          <cite>2 Timóteo 2:15</cite>
+        </div>
+      </div>
     </div>
 
-    <div class="content" id="estudos-biblicos">
-        <h2 id="timoteo">Procura apresentar-te a Deus aprovado, como obreiro que não tem de que se envergonhar, que maneja bem a palavra da verdade.<br> 2 Timóteo 2.15</h2>  
-        <p id="paragrafo">Aprofunde seu conhecimento com nossos estudos detalhados sobre as Escrituras. Explore temas variados e descubra novas perspectivas.</p>
-    </div>
-    <div class="content" id="pagina-inicial">
-        <h1>Curso Básico de Teologia</h1>
-        <nav id="modulo">
-        <a href="curso teologico.html" style="background-color: #333;color:white;">Acessar</a>
-        </nav>
-    </div>
-    <div class="content" id="Esboços">
-        <h2>Esboços</h2>
-        <p>Esta é uma ferramenta essencial para pastores, pregadores e líderes religiosos que buscam transmitir a palavra de Deus de maneira clara e impactante.
-             Com uma coleção abrangente de esboços de pregações, este recurso oferece estrutura e inspiração para uma variedade de temas e passagens bíblicas.</p>
-    </div>
+    <section class="section" id="recursos">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">Explore e aprofunde</p>
+          <h2>Recursos para sua jornada bíblica</h2>
+        </div>
+        <p class="section-intro">Encontre ferramentas de estudo, referências e inspiração para compreender melhor o contexto e a mensagem das Escrituras.</p>
+      </div>
 
-    <div class="content" id="Personagens">
-        <h2>Personagens</h2>
-        <p>Desde tempos imemoriais, a Bíblia tem sido uma fonte rica e inesgotável de sabedoria, histórias e ensinamentos. Dentro de suas páginas sagradas,
-             encontramos uma vasta galeria de nomes e personagens que desempenham papéis cruciais na narrativa divina. Cada nome, cada personagem,
-             carrega consigo um significado profundo e uma história que ecoa através dos séculos, oferecendo lições valiosas e insights espirituais.
-             Esta ferramenta, dedicada a explorar os nomes e personagens bíblicos, é uma jornada fascinante pelas vidas de homens e mulheres que moldaram a fé e a história do povo de Deus.
-              De Adão, o primeiro homem, a Jesus Cristo, o Redentor, cada figura é apresentada com riqueza de detalhes, destacando suas contribuições, desafios e legados.</p>
-    </div>
+      <div class="resource-grid">
+        <a class="resource-card" href="biblia.html">
+          <span class="card-icon" aria-hidden="true">📖</span>
+          <h3>Bíblia</h3>
+          <p>Acesse as Escrituras e dedique tempo à leitura, reflexão e compreensão da Palavra.</p>
+          <span class="card-link">Começar a leitura <span aria-hidden="true">→</span></span>
+        </a>
+        <a class="resource-card" href="esboços.html">
+          <span class="card-icon" aria-hidden="true">✍️</span>
+          <h3>Esboços de pregações</h3>
+          <p>Encontre estruturas e ideias para preparar mensagens claras, organizadas e edificantes.</p>
+          <span class="card-link">Ver esboços <span aria-hidden="true">→</span></span>
+        </a>
+        <a class="resource-card" href="personagens.html">
+          <span class="card-icon" aria-hidden="true">👥</span>
+          <h3>Personagens bíblicos</h3>
+          <p>Conheça histórias, contextos e ensinamentos de homens e mulheres das narrativas bíblicas.</p>
+          <span class="card-link">Conhecer personagens <span aria-hidden="true">→</span></span>
+        </a>
+        <a class="resource-card" href="mapas.html">
+          <span class="card-icon" aria-hidden="true">🗺️</span>
+          <h3>Mapas bíblicos</h3>
+          <p>Explore os lugares e as regiões que ajudam a situar os acontecimentos das Escrituras.</p>
+          <span class="card-link">Explorar mapas <span aria-hidden="true">→</span></span>
+        </a>
+        <a class="resource-card" href="concordância">
+          <span class="card-icon" aria-hidden="true">🔎</span>
+          <h3>Concordância bíblica</h3>
+          <p>Localize palavras e temas para aprofundar pesquisas e comparar passagens bíblicas.</p>
+          <span class="card-link">Pesquisar temas <span aria-hidden="true">→</span></span>
+        </a>
+        <a class="resource-card" href="ilustrações.html">
+          <span class="card-icon" aria-hidden="true">💡</span>
+          <h3>Ilustrações</h3>
+          <p>Descubra ideias e exemplos que podem ajudar a comunicar uma mensagem com clareza.</p>
+          <span class="card-link">Ver ilustrações <span aria-hidden="true">→</span></span>
+        </a>
+      </div>
+    </section>
 
-    <div class="content" id="Mapas">
-        <h2>Mapas</h2>
-        <p>A Bíblia, com suas narrativas ricas e diversas, é um testemunho histórico e espiritual que abrange milênios e geografias vastas. Para compreender plenamente suas histórias e ensinamentos,
-             é essencial ter uma visão clara dos lugares onde esses eventos ocorreram. É nesse contexto que um atlas bíblico se torna uma ferramenta indispensável.</p>
-    </div>
+    <section class="section" id="curso-basico">
+      <div class="course-banner">
+        <div>
+          <p class="section-kicker">Aprenda passo a passo</p>
+          <h2>Curso Básico de Teologia</h2>
+          <p>Uma introdução acessível aos fundamentos da fé cristã, às principais doutrinas, à história da igreja e às disciplinas essenciais da teologia.</p>
+          <a class="button button-primary" href="curso teologico.html">Acessar o curso <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="course-note">
+          <strong>Conhecimento que edifica</strong>
+          <span>Estude com organização, aprofunde sua compreensão e desenvolva uma base para continuar aprendendo.</span>
+        </div>
+      </div>
+    </section>
 
-    <div class="content" id="curso-basico">
-        <h2>Curso Básico</h2>
-        <p>A teologia é o estudo sistemático e racional dos conceitos divinos, das escrituras sagradas e das tradições religiosas.
-             Este curso básico de teologia foi criado para oferecer uma introdução abrangente e acessível aos fundamentos da fé cristã, explorando as principais doutrinas, a história da igreja,
-              e as disciplinas teológicas essenciais.</p>
-    </div>
+    <section class="section closing">
+      <div class="closing-inner">
+        <p class="section-kicker">Continue aprendendo</p>
+        <h2>Uma palavra pode transformar uma jornada.</h2>
+        <p>Separe um momento para estudar, refletir e colocar em prática aquilo que você aprende nas Escrituras.</p>
+      </div>
+    </section>
+  </main>
 
+  <footer class="site-footer">
+    <strong>O Poder da Palavra</strong> · Estudos bíblicos para aprender, ensinar e compartilhar.
+  </footer>
+
+  <script>
+    const menuButton = document.querySelector(".mobile-menu-button");
+    const menu = document.querySelector("#menu-principal");
+
+    menuButton.addEventListener("click", () => {
+      const isOpen = menu.classList.toggle("is-open");
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+      menuButton.setAttribute("aria-label", isOpen ? "Fechar menu" : "Abrir menu");
+      menuButton.textContent = isOpen ? "✕" : "☰";
+    });
+
+    menu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        menu.classList.remove("is-open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "Abrir menu");
+        menuButton.textContent = "☰";
+      });
+    });
+  </script>
 </body>
 </html>
